@@ -49,7 +49,7 @@
         if (!selectedSeat || !email)
           return alert("Please select a seat and enter your email");
 
-        const res = await fetch("/api/reserve", {
+        const res = await fetch("http://127.0.0.1:3001/api/reserve", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ seat: selectedSeat, user: email }),

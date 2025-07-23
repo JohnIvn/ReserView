@@ -2,8 +2,11 @@ import { Kafka } from "kafkajs";
 import pkg from "pg";
 const { Client } = pkg;
 
-const kafka = new Kafka({ clientId: "middleware", brokers: ["kafka:9092"] });
-//if running locally, use brokers: ["localhost:9092"]
+const kafka = new Kafka({
+  clientId: "middleware",
+  brokers: ["localhost:9092"],
+});
+//if running locally, use brokers: ["localhost:9092"] for docker use, use brokers: ["kafka:9092"]
 const consumer = kafka.consumer({ groupId: "seat-group" });
 
 const pgClient = new Client({

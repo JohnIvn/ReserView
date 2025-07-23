@@ -13,8 +13,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-const kafka = new Kafka({ clientId: "backend", brokers: ["kafka:9092"] });
-//if running locally, use brokers: ["localhost:9092"]
+const kafka = new Kafka({ clientId: "backend", brokers: ["localhost:9092"] });
+//if running locally, use brokers: ["localhost:9092"] for docker use, use brokers: ["kafka:9092"]
 const producer = kafka.producer();
 
 const run = async () => {
