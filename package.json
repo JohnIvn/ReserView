@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/JohnIvn/ReserView/issues"
   },
-  "homepage": "https://github.com/JohnIvn/ReserView#readme"
+  "homepage": "https://github.com/JohnIvn/ReserView#readme",
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  }
 }

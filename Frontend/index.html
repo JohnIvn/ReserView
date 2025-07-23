@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Seat Reservation</title>
+    <style>
+      button {
+        margin: 0.5em;
+        padding: 1em;
+        background-color: gray;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .selected {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Seat Reservation</h1>
+    <input type="email" id="email" placeholder="Enter your email" />
+    <div id="seats"></div>
+    <button onclick="reserve()">Reserve</button>
+
+    <script>
+      const seats = ["A1", "A2", "A3", "B1", "B2", "B3"];
+      let selectedSeat = null;
+
+      const seatContainer = document.getElementById("seats");
+      const emailInput = document.getElementById("email");
+
+      seats.forEach((seat) => {
+        const btn = document.createElement("button");
+        btn.textContent = seat;
+        btn.onclick = () => {
+          selectedSeat = seat;
+          document
+            .querySelectorAll("button")
+            .forEach((b) => b.classList.remove("selected"));
+          btn.classList.add("selected");
+        };
+        seatContainer.appendChild(btn);
+      });
+
+      async function reserve() {
+        const email = emailInput.value;
+        if (!selectedSeat || !email)
+          return alert("Please select a seat and enter your email");
+
+        const res = await fetch("/api/reserve", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ seat: selectedSeat, user: email }),
+        });
+
+        const data = await res.json();
+        alert(`Seat ${data.seat} reserved for ${data.user}`);
+      }
+    </script>
+  </body>
+</html>

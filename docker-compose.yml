@@ -26,9 +26,13 @@ services:
       POSTGRES_DB: appdb
     ports:
       - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   backend:
-    build: ./backend
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
     ports:
       - "3001:3001"
     depends_on:
@@ -36,14 +40,9 @@ services:
       - postgres
 
   middleware:
-    build: ./middleware
+    build:
+      context: .
+      dockerfile: Dockerfile.middleware
     depends_on:
       - kafka
       - postgres
-
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
