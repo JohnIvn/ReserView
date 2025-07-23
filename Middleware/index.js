@@ -6,10 +6,10 @@ const kafka = new Kafka({ clientId: "middleware", brokers: ["kafka:9092"] });
 const consumer = kafka.consumer({ groupId: "seat-group" });
 
 const pgClient = new Client({
-  user: "user",
-  host: "postgres",
-  database: "appdb",
-  password: "pass",
+  user: "postgres",
+  host: "localhost",
+  database: "test",
+  password: "admin",
   port: 5432,
 });
 

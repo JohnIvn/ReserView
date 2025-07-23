@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:backend": "nodemon backend/index.js",
-    "start:middleware": "nodemon middleware/index.js",
-    "dev": "concurrently \"npm run start:backend\" \"npm run start:middleware\""
+    "backend": "nodemon backend/index.js",
+    "middleware": "nodemon middleware/index.js",
+    "dev": "concurrently \"npm run backend\" \"npm run middleware\""
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/JohnIvn/ReserView/issues"
   },

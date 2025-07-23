@@ -2,4 +2,4 @@ FROM node:18
 WORKDIR /app
 COPY . .
 RUN npm install
-CMD ["node", "backend/index.js"]
+CMD ["node", "Backend/index.js"]
